@@ -1,0 +1,31 @@
+
+/* universal styling */
+* {
+    font-family: 'Nunito', 'Rubik', 'Trebuchet MS', sans-serif;;
+}
+
+/* nav bar */
+.color-nav {
+    background-color: #FFE1EE;
+}
+
+/* footer */
+footer {
+    padding: 20px;
+    height: 2.5rem;
+    padding-bottom: 0.2em; 
+}
+
+/* home */
+.flex-container-home {
+    display: flex;
+    justify-content: space-evenly;
+}
+.flex-item-card-home {
+    width: 60%;
+    background-color: white;
+    margin: 6rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
+    padding: 4%;
+}
