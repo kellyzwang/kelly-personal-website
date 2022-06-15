@@ -4,6 +4,25 @@
     font-family: 'Nunito', 'Rubik', 'Trebuchet MS', sans-serif;;
 }
 
+section {
+    padding-top: 70px;
+}
+/*
+.flex-container { 
+    display: flex;
+}
+.flex-item {
+    flex-grow: 1;  get 1 share of extra space 
+    flex-shrink: 0;  do not shrink if items overflow container 
+    flex-basis: 33%;  take up 33% of parent initially 
+    width: 60%;
+    background-color: #FCF4DD;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
+    padding: 4%;
+}
+*/
 /* nav bar */
 .color-nav {
     background-color: #FFE1EE;
@@ -25,6 +44,36 @@ footer {
     width: 60%;
     background-color: white;
     margin: 6rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
+    padding: 4%;
+}
+.center {
+    text-align: center;
+}
+/* 
+.pikachu-img {
+    width: 9em;
+    height: 9em;
+    float:right;
+}
+.togepi-img {
+    width: 7em;
+    height: 7em;
+    bottom: 0;
+    float:right;
+}
+*/
+
+/* drama page */
+.flex-container-drama { 
+    display: flex;
+    justify-content: space-evenly;
+}
+.flex-item-card-drama {
+    width: 70%;
+    background-color: #FCF4DD;
+    margin: 1rem;
     border-radius: 10px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
     padding: 4%;

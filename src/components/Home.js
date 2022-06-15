@@ -5,10 +5,10 @@ export function Home() {
     return (
         <div>
             <section>
-                <div className="flex-container-home">
+                <div className="flex-container-home center">
                     <div className="flex-item-card-home">
                         <h1>Welcome to Kelly's Website!</h1>
-                        <p></p>
+                        <img src="img/pokemon.png" alt="pokemon"  />
                     </div>
                 </div>
             </section>
