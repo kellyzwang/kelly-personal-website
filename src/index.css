@@ -4,9 +4,13 @@
     font-family: 'Nunito', 'Rubik', 'Trebuchet MS', sans-serif;;
 }
 
-section {
+body {
+    background-image: url("background.png");
+    background-repeat: repeat;
+    background-position: center;
     padding-top: 70px;
 }
+
 /*
 .flex-container { 
     display: flex;
@@ -77,4 +81,22 @@ footer {
     border-radius: 10px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
     padding: 4%;
+}
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.success-message {
+    color: #4F8A10;
+}
+h1 {
+    text-align: center;
+}
+.padding-top-bottom {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.manage-quotes-button {
+    align-items: center;
 }
