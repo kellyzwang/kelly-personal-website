@@ -1,7 +1,7 @@
-
 /* universal styling */
 * {
-    font-family: 'Nunito', 'Rubik', 'Trebuchet MS', sans-serif;;
+    font-family: 'Nunito', 'Rubik', 'Trebuchet MS', sans-serif;
+    ;
 }
 
 body {
@@ -9,6 +9,10 @@ body {
     background-repeat: repeat;
     background-position: center;
     padding-top: 70px;
+}
+
+h1 {
+    text-align: center;
 }
 
 /*
@@ -36,7 +40,7 @@ body {
 footer {
     padding: 20px;
     height: 2.5rem;
-    padding-bottom: 0.2em; 
+    padding-bottom: 0.2em;
 }
 
 /* home */
@@ -44,6 +48,7 @@ footer {
     display: flex;
     justify-content: space-evenly;
 }
+
 .flex-item-card-home {
     width: 60%;
     background-color: white;
@@ -52,9 +57,11 @@ footer {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
     padding: 4%;
 }
+
 .center {
     text-align: center;
 }
+
 /* 
 .pikachu-img {
     width: 9em;
@@ -70,10 +77,11 @@ footer {
 */
 
 /* drama page */
-.flex-container-drama { 
+.flex-container-drama {
     display: flex;
     justify-content: space-evenly;
 }
+
 .flex-item-card-drama {
     width: 70%;
     background-color: #FCF4DD;
@@ -82,21 +90,52 @@ footer {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
     padding: 4%;
 }
+
 .center-flex {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .success-message {
     color: #4F8A10;
 }
-h1 {
-    text-align: center;
-}
+
 .padding-top-bottom {
     padding-top: 2em;
     padding-bottom: 2em;
 }
+
 .manage-quotes-button {
     align-items: center;
+}
+
+/* To Do Page*/
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.flex-container-to-do {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.flex-item-card-to-do {
+    width: 80%;
+    background-color: #E8DFF5;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.26);
+    padding: 4%;
+}
+
+.flex-to-do {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }

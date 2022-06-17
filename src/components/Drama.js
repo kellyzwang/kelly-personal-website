@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
-import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } from 'firebase/database';
+import { getDatabase, ref, push as firebasePush } from 'firebase/database';
 import { NavLink } from 'react-router-dom';
 
 
@@ -11,10 +11,6 @@ export function Drama(props) {
     const [dramaNameEntered, setDramaNameEntered] = useState("");
     const [characterEntered, setCharacterEntered] = useState("");
 
-    const [
-        isSuccessfullySubmitted,
-        setIsSuccessfullySubmitted,
-    ] = useState(false);
 
     const handleQuoteChange = (event) => {
         const enteredValue = event.target.value;
@@ -59,7 +55,7 @@ export function Drama(props) {
 
 
 
-    const [displayedQuote, setDisplayedQuote] = useState("Cleck the 'New Quote' button below to view a quote! :)");
+    const [displayedQuote, setDisplayedQuote] = useState("Click the 'New Quote' button below to see quote of the day! :)");
 
     const handleNewQuoteSubmit = (event) => {
         event.preventDefault();

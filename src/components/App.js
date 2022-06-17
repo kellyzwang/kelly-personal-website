@@ -7,7 +7,8 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { NavBar } from './NavBar.js';
 import { Home } from './Home.js';
 import { Drama } from './Drama.js';
-import { ManageQuotes } from './ManageQuotes.js'
+import { ManageQuotes } from './ManageQuotes.js';
+import { ToDo } from './ToDo.js';
 
 
 function App(props) {
@@ -54,6 +55,8 @@ function App(props) {
                 <Route path="/home" element={<Home />} />
                 <Route path="/drama" element={<Drama quoteData={quoteData}/>} />
                 <Route path="/manage-quotes" element={<ManageQuotes />} />
+                <Route path="/to-do" element={<ToDo />} />
+
                 {/*<Route path="/*" element={<Home />} /> */}
             </Routes>
         </div>
