@@ -77,11 +77,17 @@ export function ToDo() {
         const newTodoData = [...ToDoData];
         newTodoData.splice(indexOfTheTask, 1);
         setToDoData(newTodoData);
+
+        if (ToDoData === null) {
+            setToDoData([{}]);
+        }
     }
 
-    let DisplayedTodos = <div></div>
-    if (ToDoData.length !== 0) {
-         DisplayedTodos = ToDoData.map((todo, index) => (
+    let DisplayedTodos;
+    if (firebaseToDoData === null) {
+        DisplayedTodos = <div>Yay! There's no tasks in your to do list!</div>
+    } else {
+        DisplayedTodos = ToDoData.map((todo, index) => (
             <Card key={index}>
                 <Card.Body key={index}>
                     <div className="flex-to-do">
@@ -94,7 +100,8 @@ export function ToDo() {
                 </Card.Body>
             </Card>
         ))
-    } 
+    }
+
 
     return (
         <div>
