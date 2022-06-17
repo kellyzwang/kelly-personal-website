@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getDatabase, ref, onValue } from 'firebase/database';
 
-
-//import { getDatabase, ref, onValue } from 'firebase/database';
 import { NavBar } from './NavBar.js';
 import { Home } from './Home.js';
 import { Drama } from './Drama.js';
 import { ManageQuotes } from './ManageQuotes.js';
 import { ToDo } from './ToDo.js';
+import { Focus } from './Focus.js';
 
 
 function App(props) {
@@ -56,6 +55,7 @@ function App(props) {
                 <Route path="/drama" element={<Drama quoteData={quoteData}/>} />
                 <Route path="/manage-quotes" element={<ManageQuotes />} />
                 <Route path="/to-do" element={<ToDo />} />
+                <Route path="/focus" element={<Focus />} />
 
                 {/*<Route path="/*" element={<Home />} /> */}
             </Routes>
