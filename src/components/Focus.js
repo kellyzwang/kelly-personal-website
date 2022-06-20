@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import DateTimePicker from 'react-datetime-picker';
 import TimePicker from 'react-time-picker';
 
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush } from 'firebase/database';
 
 import { NavBar } from './NavBar.js';
 
@@ -12,14 +14,17 @@ import { NavBar } from './NavBar.js';
 export function Focus(props) {
 
     const [dateSelected, setDateSelected] = useState(new Date());
-    const [startTime, setStartTime] = useState('10:00');
+    const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+    const [workLength, setWorkLength] = useState('');
+    const [taskName, setTaskName] = useState('');
+
 
     //when day is clicked   
     const handleDateSelect = (event) => {
         event.preventDefault();
-
-
+        const enteredValue = event.target.value;
+        setDateSelected(enteredValue);
     }
 
     const handleDateChange = (event) => {
@@ -27,14 +32,37 @@ export function Focus(props) {
         setDateSelected(enteredValue);
     }
 
-    const handleStartTimeChange = (event) => {
+    const handleTaskNameChange = (event) => {
         const enteredValue = event.target.value;
-        setStartTime(enteredValue);
+        setTaskName(enteredValue);
     }
-    const handleEndTimeChange = (event) => {
-        const enteredValue = event.target.value;
-        setEndTime(enteredValue);
+
+    // Calculate time difference
+    const calculateWorkLength = function (start, end) {
+        const startArr = start.split(':')
+        const endArr = end.split(':')
+        const minsdiff=parseInt(endArr[0],10)*60+parseInt(endArr[1],10)-parseInt(startArr[0],10)*60-parseInt(startArr[1],10);
+        const calculatedWorkLength = String(100+Math.floor(minsdiff/60)).substr(1)+':'+String(100+minsdiff%60).substr(1);
+        return calculatedWorkLength;
     }
+
+    const handleEnterButtonClick = (event) => {
+        event.preventDefault();
+        const timeDiff = calculateWorkLength(startTime, endTime);
+        setWorkLength(timeDiff);
+
+        const db = getDatabase();
+        const newData = {
+            date: dateSelected,
+            taskName: taskName,
+            workLength: workLength,
+        }
+        const allworkLengthData = ref(db, "allworkLengthData");
+        firebasePush(allworkLengthData, newData);
+    }
+
+
+
 
     return (
         <div>
@@ -52,10 +80,16 @@ export function Focus(props) {
                         </FormGroup>
 
                         <FormGroup>
+                            <Label for="dramaName">Task name:</Label>
+                            <Input value={taskName} onChange={handleTaskNameChange} />
+                            <FormFeedback>You will not be able to see this</FormFeedback>
+                        </FormGroup>
+
+                        <FormGroup>
                             <Label for="StartTime">Start Time:</Label>
                             <br></br>
                             <TimePicker
-                                onChange={handleStartTimeChange}
+                                onChange={setStartTime}
                                 value={startTime} />{'  '}
                         </FormGroup>
 
@@ -63,9 +97,13 @@ export function Focus(props) {
                             <Label for="EndTime">End Time:</Label>
                             <br></br>
                             <TimePicker
-                                onChange={handleEndTimeChange}
+                                onChange={setEndTime}
                                 value={endTime} />
                         </FormGroup>
+                        <Button outline color="secondary"
+                                onClick={handleEnterButtonClick}>
+                            Enter
+                        </Button>
                     </div>
                 </div>
             </section>
