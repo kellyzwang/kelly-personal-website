@@ -19,7 +19,6 @@ export function Focus(props) {
     const [workLength, setWorkLength] = useState('');
     const [taskName, setTaskName] = useState('');
 
-
     //when day is clicked   
     const handleDateSelect = (event) => {
         event.preventDefault();
@@ -55,14 +54,36 @@ export function Focus(props) {
         const newData = {
             date: dateSelected,
             taskName: taskName,
-            workLength: workLength,
+            workLength: timeDiff,
         }
         const allworkLengthData = ref(db, "allworkLengthData");
         firebasePush(allworkLengthData, newData);
+
+        // set input data back to "" so it clears after submit
+        setStartTime("");
+        setEndTime("");
+        setTaskName("");
+        setDateSelected(new Date());
     }
 
 
 
+
+    const [dateSelectedToView, setDateSelectedToView] = useState(new Date());
+
+    const handleDateSelectToView = (event) => {
+        event.preventDefault();
+        const enteredValue = event.target.value;
+        setDateSelectedToView(enteredValue);
+    }
+
+    const handleDateChangeToView = (event) => {
+        const enteredValue = event.target.value;
+        setDateSelectedToView(enteredValue);
+    }
+
+
+    
 
     return (
         <div>
@@ -102,8 +123,25 @@ export function Focus(props) {
                         </FormGroup>
                         <Button outline color="secondary"
                                 onClick={handleEnterButtonClick}>
-                            Enter
+                            Submit
                         </Button>
+                    </div>
+                </div>
+            </section>
+
+
+            <section className="padding-top-bottom">
+                <h1>View My Tasks</h1>
+                <div className="flex-container-focus">
+                    <div className="flex-item-card-focus">
+                        <FormGroup>
+                            <Label for="Today">Select a date:</Label>
+                            <DatePicker
+                                selected={dateSelectedToView}
+                                onSelect={handleDateSelectToView} //when day is clicked
+                                onChange={handleDateChangeToView} //only when value has changed
+                            />
+                        </FormGroup>
                     </div>
                 </div>
             </section>
